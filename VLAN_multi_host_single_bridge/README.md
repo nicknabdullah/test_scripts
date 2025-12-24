@@ -24,24 +24,30 @@
 
 ## Typical quick workflow (example)
 
-1. Create a bridge namespace and bridge interface
+1. Make the scripts executable
+
+```bash
+chmod +x create_bridge.sh create_host_for_bridge.sh listen_to_msg_on_host.sh send_msg_to_host_mac.sh
+```
+
+2. Create a bridge namespace and bridge interface
 
 ```bash
 # Create bridge namespace bridge0 and bridge interface br0 inside it
-sudo bash create_bridge.sh bridge0 br0
+sudo ./create_bridge.sh bridge0 br0
 ```
 
-2. Create two host namespaces and attach them to the bridge on different VLANs
+3. Create two host namespaces and attach them to the bridge on different VLANs
 
 ```bash
 # Create host10 attached to VLAN 10
-sudo bash create_host_for_bridge.sh host10 eth10 10 bridge0 br0
+sudo ./create_host_for_bridge.sh host10 eth10 10 bridge0 br0
 
 # Create host20 attached to VLAN 20
-sudo bash create_host_for_bridge.sh host20 eth20 20 bridge0 br0
+sudo ./create_host_for_bridge.sh host20 eth20 20 bridge0 br0
 ```
 
-3. Start listeners (in separate terminals) to capture frames from each host
+4. Start listeners (in separate terminals) to capture frames from each host
 
 ```bash
 # In terminal A
@@ -51,7 +57,7 @@ sudo ./listen_to_msg_on_host.sh host10 eth10
 sudo ./listen_to_msg_on_host.sh host20 eth20
 ```
 
-4. Send a message from host10 to a destination MAC (unicast or broadcast)
+5. Send a message from host10 to a destination MAC (unicast or broadcast)
 
 ```bash
 # From the control shell (runs send script which executes ethsend.py inside host10 namespace)
