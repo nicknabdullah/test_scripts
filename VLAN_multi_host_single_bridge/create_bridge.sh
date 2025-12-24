@@ -1,10 +1,10 @@
 #!/bin/bash
 #
 # Usage:
-#   ./script.sh <namespace> <bridge-name>
+#   ./create_bridge.sh <namespace> <bridge-name>
 #
 # Example:
-#   ./script.sh ns1 br0
+#   ./create_bridge.sh bridge0 br0
 #
 # This script creates a network namespace and a bridge inside it,
 # then enables VLAN filtering on that bridge.
