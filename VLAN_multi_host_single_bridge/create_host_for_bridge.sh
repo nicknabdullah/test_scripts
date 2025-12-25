@@ -1,18 +1,18 @@
 #!/bin/bash
 #
 # Usage:
-#   ./create_host_for_bridge.sh <host-ns> <peer1-if> <vlan-id> <bridge-ns> <bridge-if>
+#   ./create_host_for_bridge.sh <host-ns> <host-if> <vlan-id> <bridge-ns> <bridge-if>
 #
 # Example:
-#   ./create_host_for_bridge.sh host1 veth1 10 ns1 br0
+#   ./create_host_for_bridge.sh host10 eth10 10 bridge0 br0
 #
 # This script creates an end host namespace, connects it to a bridge
 # using a veth pair, and assigns it to a VLAN.
 
 create_end_host() {
   local host_nsname="$1"     # Name of the end host namespace
-  local peer1_ifname="$2"    # veth interface inside the host namespace
-  local peer2_ifname="${2}b" # veth interface inside the bridge namespace
+  local peer1_ifname="$2"    # Veth interface inside the host namespace
+  local peer2_ifname="${2}b" # Veth interface inside the bridge namespace
   local vlan_vid="$3"        # VLAN ID to assign
   local bridge_nsname="$4"   # Bridge namespace name
   local bridge_ifname="$5"   # Bridge interface name

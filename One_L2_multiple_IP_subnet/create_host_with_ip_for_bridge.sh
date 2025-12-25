@@ -2,8 +2,8 @@
 
 # ==========================================
 # Script: create_host_with_ip_for_bridge.sh
-# Usage: ./create_host_with_ip_for_bridge.sh <host_nsname> <peer1_ifname> <peer1_ifaddr> <bridge_nsname> <bridge_ifname>
-# Example: ./create_host_with_ip_for_bridge.sh h1 veth-h1 10.0.0.1/24 ns1 br0
+# Usage: ./create_host_with_ip_for_bridge.sh <host_nsname> <host_ifname> <host_ifaddr> <bridge_nsname> <bridge_ifname>
+# Example: ./create_host_with_ip_for_bridge.sh host10 eth10 10.0.0.1/24 bridge0 br0
 #
 # This script creates an end host namespace, assigns it an IP address,
 # connects it to a bridge (in another namespace) via a veth pair,
@@ -12,15 +12,15 @@
 
 # Check if all required arguments are provided
 if [ $# -ne 5 ]; then
-  echo "Usage: $0 <host_nsname> <peer1_ifname> <peer1_ifaddr> <bridge_nsname> <bridge_ifname>"
-  echo "Example: $0 h1 veth-h1 10.0.0.1/24 ns1 br0"
+  echo "Usage: $0 <host_nsname> <host_ifname> <host_ifaddr> <bridge_nsname> <bridge_ifname>"
+  echo "Example: $0 host10 eth10 10.0.0.1/24 bridge0 br0"
   exit 1
 fi
 
 create_host_with_ip_for_bridge() {
   local host_nsname="$1"       # Namespace name for the end host
-  local peer1_ifname="$2"      # Interface inside host namespace
-  local peer2_ifname="${2}b"   # Interface inside bridge namespace (auto-suffixed with "b")
+  local peer1_ifname="$2"      # Veth interface inside host namespace
+  local peer2_ifname="${2}b"   # Veth interface inside bridge namespace (auto-suffixed with "b")
   local peer1_ifaddr="$3"      # IP address for host's interface
   local bridge_nsname="$4"     # Namespace where bridge lives
   local bridge_ifname="$5"     # Bridge interface name

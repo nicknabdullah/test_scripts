@@ -3,7 +3,7 @@
 # ===============================
 # Script: create_bridge.sh
 # Usage: ./create_bridge.sh <namespace> <bridge_name>
-# Example: ./create_bridge.sh ns1 br0
+# Example: ./create_bridge.sh bridge0 br0
 #
 # This script creates a network namespace and a bridge interface inside it.
 # ===============================
@@ -11,7 +11,7 @@
 # Check if both arguments are provided
 if [ $# -ne 2 ]; then
   echo "Usage: $0 <namespace> <bridge_name>"
-  echo "Example: $0 ns1 br0"
+  echo "Example: $0 bridge0 br0"
   exit 1
 fi
 
