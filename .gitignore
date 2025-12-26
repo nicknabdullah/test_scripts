@@ -1,1 +1,27 @@
+# Vagrant & Virtualization
 .vagrant/
+Vagrantfile.lock
+*.box
+
+# Ansible
+*.retry
+*.swp
+*.swo
+.ansible/
+
+# SSH & Keys
+ssh.config
+*.pem
+*.key
+*.pub
+known_hosts
+known_hosts.old
+
+# IDE & Editor
+.vscode/
+.idea/
+
+# Operating System
+.DS_Store
+Thumbs.db
+*.log

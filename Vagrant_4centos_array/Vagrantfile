@@ -13,7 +13,7 @@ vms = [
     hostname: "host2",
     os: "centos/stream9",
     ip: "192.168.56.11",
-    memory: 1024,
+    memory: 2048,
     cpus: 2
   },
   {
@@ -21,6 +21,14 @@ vms = [
     hostname: "host3",
     os: "centos/stream9",
     ip: "192.168.56.12",
+    memory: 2048,
+    cpus: 2
+  },
+  {
+    vm_name: "host4",
+    hostname: "host4",
+    os: "centos/stream9",
+    ip: "192.168.60.10",
     memory: 1024,
     cpus: 2
   }
